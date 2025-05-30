@@ -18,7 +18,7 @@ const error = ref('');
 // Fetch online users
 const fetchUsers = async () => {
   try {
-    const response = await fetch('http://172.20.10.3:8000/users');
+    const response = await fetch('http://192.168.1.5:8000/users');
     if (response.ok) {
       const data = await response.json();
       // Filter out current user
@@ -38,7 +38,7 @@ const connectWebSocket = () => {
     socket.value.close();
   }
   
-  socket.value = new WebSocket(`ws://172.20.10.3:8000/ws/${props.username}`);
+  socket.value = new WebSocket(`ws://192.168.1.5:8000/ws/${props.username}`);
   
   socket.value.onopen = () => {
     console.log('WebSocket connected');
@@ -134,7 +134,7 @@ const logout = async () => {
     // Nếu không phải admin, thông báo cho server về việc đăng xuất
     if (!isAdmin) {
       try {
-        await fetch('http://172.20.10.3:8000/logout', {
+        await fetch('http://192.168.1.5:8000/logout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

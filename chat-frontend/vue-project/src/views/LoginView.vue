@@ -35,7 +35,7 @@ const login = async () => {
     const formData = new FormData();
     formData.append('username', username.value);
     
-    const response = await fetch('http://172.20.10.3:8000/login', {
+    const response = await fetch('http://192.168.1.5:8000/login', {
       method: 'POST',
       body: formData
     });
